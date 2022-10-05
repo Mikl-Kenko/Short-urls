@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>В системе</title>
+</head>
+<body>
+  <div>
+    <form action="{% url 'main:log_out' %}" target="_blank">
+      <button> Выйти из системы </button>
+    </form>
+  </div>
+     <div style="display: flex; align-items: center">
+       <h3>Пользователь - {{ user }}: </h3>
+       <div>
+         <form action="{% url 'main:list_url_short' %}" target="_blank">
+         <button> Статистика </button>
+         </form>
+       </div>
+     </div>
+  <form action="" method="POST">
+    {%  csrf_token %}
+    {{ form.as_p }}
+    <button> Сократить ссылку </button>
+  </form><br>
+{% if url_shorted %}
+  <h3 style="color: #36d736"> Укороченная ссылка: {{ url_shorted }}</h3> <br>
+  <h3 > Оригинальная ссылка: {{ url_all }}</h3>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title> Статистика </title>
+    <style>
+        table {border:2px solid black; width: 100%}
+        table tr td {border: 1px solid black}
+        table tr td:nth-child(1) {word-break: break-all}
+    </style>
+</head>
+<body>
+   <div>
+     <form action="{% url 'main:log_out' %}" target="_blank">
+     <button> Выйти из системы </button>
+     </form>
+   </div><br>
+<h3> Статистика запросов пользователя - {{ name }}: </h3>
+  <table>
+    <tr>
+      <th>Полная ссылка</th>
+      <th>Короткая ссылка</th>
+    </tr>
+      {% for u in url %}
+    <tr>
+      <td width="70%">{{ u.url_all }}</td>
+      <td >{{ u.url_short }}</td>
+    </tr>
+      {% endfor %}
+  </table><br>
+     <div>
+        <form action="{% url 'main:url_short' %}" target="_blank">
+        <button> Сократить новую ссылку </button>
+        </form>
+     </div>
+</body>
+</html>

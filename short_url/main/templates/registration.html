@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+</head>
+<body>
+ <div>
+    <form action="{% url 'main:login' %}" target="_blank">
+    <button> Заблудился? - Войти в систему </button>
+    </form>
+ </div><br>
+    <form action="" method="POST" style="background-color: rgba(183,94,227,0.87); padding: 10px">
+       <table style="margin-inside: 10px">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button> Зарегистрироваться </button>
+       </table>
+    </form>
+</body>
+</html>
